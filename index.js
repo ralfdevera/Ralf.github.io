@@ -1,22 +1,17 @@
-// Like Button Functionality
-document.getElementById("btnLike1").addEventListener("click", function() {
-  let count = parseInt(document.getElementById("countLike1").textContent);
-  document.getElementById("countLike1").textContent = count + 1;
-});
+const btnDisLike1 = document.getElementById("btnDisLike1")
+const countDisLike1 = document.getElementById("countDisLike1")
 
-// Dislike Button Functionality
-document.getElementById("btnDislike1").addEventListener("click", function() {
-  let count = parseInt(document.getElementById("countDislike1").textContent);
-  document.getElementById("countDislike1").textContent = count + 1;
-});
+function clickDisLike1(){
+  let totalDisLikes = parseInt(countDisLike1.value) + 1
+  countDisLike1.textContent = totalDisLikes.toString()
+}  
+btnDisLike1.addEventListener("click",clickDisLike1)
 
-// Submit Button Functionality
-document.getElementById("btnSubmit").addEventListener("click", function() {
-  let comment = document.getElementById("comment").value;
-  if (comment.trim() !== "") {
-    let commentElement = document.createElement("p");
-    commentElement.textContent = comment;
-    document.getElementById("comments").appendChild(commentElement);
-    document.getElementById("comment").value = "";
-  }
-});
+const btnDisLike2 = document.getElementById("btnDisLike2")
+const countDisLike2 = document.getElementById("countDisLike2")
+
+function clickDisLike2(){
+  let totalDisLikes = parseInt(countDisLike2.value) + 1
+  countDisLike2.textContent = totalDisLikes.toString()
+}  
+btnDisLike2.addEventListener("click",clickDisLike2)
