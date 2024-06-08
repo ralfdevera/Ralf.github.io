@@ -13,6 +13,9 @@
         <img src="Snapchat-1565417146.jpg" class="img-thumbnail" style="width:400px;height:500px;"/><br>
         <button class="btn btn-primary like-btn" type="button" id="btnLike1"> Like </button>
         <button class="btn btn-primary dislike-btn" type="button" id="btnDislike1"> Dislike </button>
+        <button class="btn btn-primary sad-btn" type="button" id="btnSad1"> Sad </button>
+        <button class="btn btn-primary haha-btn" type="button" id="btnHaha1"> Haha </button>
+        <button class="btn btn-primary angry-btn" type="button" id="btnAngry1"> Angry </button>
         <output id="countLike1">0</output>
         <output id="countDislike1">0</output>
       </div>
@@ -20,6 +23,9 @@
         <img src="FB_IMG_1714718835554.jpg" class="img-thumbnail" style="width:400px;height:500px;"/><br>
         <button class="btn btn-primary like-btn" type="button" id="btnLike2"> Like </button>
         <button class="btn btn-primary dislike-btn" type="button" id="btnDislike2"> Dislike </button>
+        <button class="btn btn-primary sad-btn" type="button" id="btnSad2"> Sad </button>
+        <button class="btn btn-primary haha-btn" type="button" id="btnHaha2"> Haha </button>
+        <button class="btn btn-primary angry-btn" type="button" id="btnAngry2"> Angry </button>
         <output id="countLike2">0</output>
         <output id="countDislike2">0</output>
       </div>
@@ -48,6 +54,21 @@
     document.getElementById("btnDislike1").addEventListener("click", function() {
       let count = parseInt(document.getElementById("countDislike1").textContent);
       document.getElementById("countDislike1").textContent = count + 1;
+    });
+
+    // Sad Button Functionality
+    document.getElementById("btnSad1").addEventListener("click", function() {
+      // Implement sad reaction functionality here
+    });
+
+    // Haha Button Functionality
+    document.getElementById("btnHaha1").addEventListener("click", function() {
+      // Implement haha reaction functionality here
+    });
+
+    // Angry Button Functionality
+    document.getElementById("btnAngry1").addEventListener("click", function() {
+      // Implement angry reaction functionality here
     });
 
     // Submit Button Functionality
