@@ -27,34 +27,14 @@
                  <output id="countdisLikes2">0</output>
            </div>
                 <div class="col-4">
-                      Comments<br>
-                      <input type="text" class="form-control" id="comment"/>
-                      <button class="btn btn-success" id="submit">Submit</button>
-                      <textarea class="form-control" id="commentbox" rows="20"></textarea>
+                      <input type="text" id="comment2" placeholder="Enter your comment">
+                      <button onclick="saveComment(2)">Submit Comment</button>
+                      <div id="commentSection2"></div>
+                      
                 </div>
           </div>
          </div>
         <script src="index.js"></script>
       </body>
-      <!-- Picture 1 -->
-<div>
-    <button id="btnLike1">Like</button>
-    <span>Likes: <span id="countLike1">0</span></span>
-    <button id="btnDisLike1">Dislike</button>
-    <span>Dislikes: <span id="countDisLike1">0</span></span>
-    <input type="text" id="comment1" placeholder="Enter your comment">
-    <button onclick="saveComment(1)">Submit Comment</button>
-    <div id="commentSection1"></div>
-</div>
-
-<!-- Picture 2 -->
-<div>
-    <button id="btnLike2">Like</button>
-    <span>Likes: <span id="countLike2">0</span></span>
-    <button id="btnDisLike2">Dislike</button>
-    <span>Dislikes: <span id="countDisLike2">0</span></span>
-    <input type="text" id="comment2" placeholder="Enter your comment">
-    <button onclick="saveComment(2)">Submit Comment</button>
-    <div id="commentSection2"></div>
-</div>
+      
 </html>
