@@ -1,36 +1,31 @@
-// Picture 1
+// Image 1
 const btnLike1 = document.getElementById("btnLike1");
-const countLike1 = document.getElementById("countLike1");
+const countLikes1 = document.getElementById("countLikes1");
+const btnDislike1 = document.getElementById("btnDislike1");
+const countDislikes1 = document.getElementById("countDislikes1");
+const btnHaha1 = document.getElementById("btnHaha1");
+const countHaha1 = document.getElementById("countHaha1");
+const btnHeart1 = document.getElementById("btnHeart1");
+const countHeart1 = document.getElementById("countHeart1");
 
 btnLike1.addEventListener("click", () => {
-    let totalLikes = parseInt(countLike1.textContent) + 1;
-    countLike1.textContent = totalLikes.toString();
+    countLikes1.textContent = parseInt(countLikes1.textContent) + 1;
 });
 
-const btnDisLike1 = document.getElementById("btnDisLike1");
-const countDisLike1 = document.getElementById("countDisLike1");
-
-btnDisLike1.addEventListener("click", () => {
-    let totalDisLikes = parseInt(countDisLike1.textContent) + 1;
-    countDisLike1.textContent = totalDisLikes.toString();
+btnDislike1.addEventListener("click", () => {
+    countDislikes1.textContent = parseInt(countDislikes1.textContent) + 1;
 });
 
-// Picture 2
-const btnLike2 = document.getElementById("btnLike2");
-const countLike2 = document.getElementById("countLike2");
-
-btnLike2.addEventListener("click", () => {
-    let totalLikes = parseInt(countLike2.textContent) + 1;
-    countLike2.textContent = totalLikes.toString();
+btnHaha1.addEventListener("click", () => {
+    countHaha1.textContent = parseInt(countHaha1.textContent) + 1;
 });
 
-const btnDisLike2 = document.getElementById("btnDisLike2");
-const countDisLike2 = document.getElementById("countDisLike2");
-
-btnDisLike2.addEventListener("click", () => {
-    let totalDisLikes = parseInt(countDisLike2.textContent) + 1;
-    countDisLike2.textContent = totalDisLikes.toString();
+btnHeart1.addEventListener("click", () => {
+    countHeart1.textContent = parseInt(countHeart1.textContent) + 1;
 });
+
+// Image 2 (Similar to Image 1, just change the IDs)
+
 function saveComment(pictureNumber) {
     const commentInput = document.getElementById(`comment${pictureNumber}`);
     const commentSection = document.getElementById(`commentSection${pictureNumber}`);
