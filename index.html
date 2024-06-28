@@ -29,6 +29,11 @@
         height: 100px;
         margin-bottom: 10px;
     }
+    .payment-icons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
 </style>
 </head>
 <body>
@@ -39,15 +44,13 @@
             <img src="cellphone1.jpg" alt="Cellphone 1">
             <h3>Brand: Brand 1</h3>
             <p>Price: $<span id="price1">500</span></p>
-            <input type="number" id="quantity1" placeholder="Quantity">
-            <button onclick="addToCart(1)">Add to Cart</button>
+            <input type="number" id="quantity1" placeholder="Quantity" oninput="addToCart(1)">
         </div>
         <div class="product">
             <img src="cellphone2.jpg" alt="Cellphone 2">
             <h3>Brand: Brand 2</h3>
             <p>Price: $<span id="price2">700</span></p>
-            <input type="number" id="quantity2" placeholder="Quantity">
-            <button onclick="addToCart(2)">Add to Cart</button>
+            <input type="number" id="quantity2" placeholder="Quantity" oninput="addToCart(2)">
         </div>
     </div>
     <div class="orders">
@@ -58,9 +61,13 @@
         <input type="number" id="cash" placeholder="Enter Cash">
         <button onclick="calculateChange()">Calculate Change</button>
         <p id="change"></p>
-        <button onclick="gcashTransfer()">GCash Transfer</button>
+        <div class="payment-icons">
+            <img src="gcash_icon.png" alt="GCash" onclick="gcashTransfer()">
+            <img src="paymaya_icon.png" alt="PayMaya" onclick="payMayaTransfer()">
+        </div>
     </div>
 </div>
-<script src="script.js"></script>
 </body>
+    <script src="script.js"></script>
 </html>
+
