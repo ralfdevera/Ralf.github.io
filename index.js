@@ -1,9 +1,3 @@
-<script src="script.js"></script>
-
-</body>
-</html>
-
-<!-- script.js -->
 var cellphoneBrands = {
   "apple": {
     "iphone-13": {"price": 999, "description": "iPhone 13", "image": "iphone-13.jpg"}
@@ -26,29 +20,15 @@ document.getElementById("add-to-cart").addEventListener("click", function() {
   var brand = document.getElementById("brand").value;
   var model = document.getElementById("model").value;
   var quantity = parseInt(document.getElementById("quantity").value);
-  var price = cellphoneBrands[brand][model]["price"];
-  var description = cellphoneBrands[brand][model]["description"];
-  var image = cellphoneBrands[brand][model]["image"];
 
-  var order = {
-    brand: brand,
-    model: model,
-    quantity: quantity,
-    price: price,
-    description: description,
-    image: image
-  };
-
-  cart.push(order);
-  
-});
+}
 
 document.getElementById("calculate-change").addEventListener("click", function() {
-  
+
 });
 
 function updateCart() {
-  
+
 }
 
 updateCart();
