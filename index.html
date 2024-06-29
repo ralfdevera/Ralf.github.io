@@ -24,6 +24,12 @@
       font-weight: bold;
       color: #00698f;
     }
+    #change-container {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -52,11 +58,6 @@
       <br><br>
       <button id="add-to-cart">Add to Cart</button>
     </form>
-    <div id="orders"></div>
-    <div id="total"></div>
-    <input type="text" id="cash" placeholder="Enter cash amount">
-    <button id="calculate-change">Calculate Change</button>
-    <div id="change"></div>
 
     <!-- images -->
     <img src="" id="iphone-13-image">
@@ -64,6 +65,37 @@
     <img src="" id="pixel-4a-image">
     <img src="" id="huawei-p30-pro-image">
 
+    <!-- orders container -->
+    <div id="orders-container">
+      <h2>Orders:</h2>
+      <div id="orders"></div>
+
+      <!-- total container -->
+      <div id="total-container">
+        <h2>Total:</h2>
+        <div id="total"></div>
+
+        <!-- change container -->
+        <div id="change-container">
+          <h2>Change:</h2>
+          <input type="text" id="cash" placeholder="Enter cash amount">
+          <button id="calculate-change">Calculate Change</button>
+          <div id="change"></div>
+        </div>
+
+        <!-- cellphone information container -->
+        <div id="cellphone-information-container">
+          <h2>Cellphone Information:</h2>
+          <!-- brand, price, quantity, model -->
+          <!-- display information here -->
+        </div>
+
+    </div>
+
   </div>
-  </body>
+
+  <!-- script.js -->
+  <script src="script.js"></script>
+
+</body>
 </html>
