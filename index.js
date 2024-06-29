@@ -1,50 +1,32 @@
-<script>
-    let orders = [];
-    
-    function addToCart(cellphoneId) {
-        const price = parseInt(document.getElementById("price" + cellphoneId).innerText);
-        const quantity = parseInt(document.getElementById("quantity" + cellphoneId).value);
-        const total = price * quantity;
-        
-        // Check if quantity is valid
-        if (!isNaN(quantity) && quantity > 0) {
-            orders = orders.filter(order => order.name !== "Brand " + cellphoneId); // Remove existing order if any
-            orders.push({ name: "Brand " + cellphoneId, price: total, quantity: quantity });
-        }
-        
-        updateOrders();
-        updateTotalPrice();
-    }
-    
-    function updateOrders() {
-        const orderList = document.getElementById("orderList");
-        orderList.innerHTML = "";
-        
-        orders.forEach(order => {
-            const li = document.createElement("li");
-            li.textContent = `${order.quantity} x ${order.name} - $${order.price}`;
-            orderList.appendChild(li);
-        });
-    }
-    
-    function updateTotalPrice() {
-        const totalPrice = orders.reduce((acc, order) => acc + order.price, 0);
-        document.getElementById("totalPrice").innerText = totalPrice;
-    }
-    
-    function calculateChange() {
-        const totalPrice = parseInt(document.getElementById("totalPrice").innerText);
-        const cash = parseInt(document.getElementById("cash").value);
-        const change = cash - totalPrice;
-        
-        document.getElementById("change").innerText = `Change: $${change}`;
-    }
-    
-    function gcashTransfer() {
-        alert("Please transfer the total amount to the provided GCash number.");
-    }
-    
-    function payMayaTransfer() {
-        alert("Please transfer the total amount using PayMaya.");
-    }
-</script>
+// Get elements from the HTML
+const qty1Input = document.getElementById("qty1");
+const qty2Input = document.getElementById("qty2");
+const totalInput = document.getElementById("total");
+const cashInput = document.getElementById("cash");
+const changeInput = document.getElementById("change");
+
+const price1 = 27000.00;
+const price2 = 37000.00;
+
+// Calculate total cost when quantity changes
+qty1Input.addEventListener('input', calculateTotal);
+qty2Input.addEventListener('input', calculateTotal);
+
+function calculateTotal() {
+    const qty1 = parseInt(qty1Input.value) || 0;
+    const qty2 = parseInt(qty2Input.value) || 0;
+
+    const totalCost = (qty1 * price1) + (qty2 * price2);
+    totalInput.value = totalCost.toFixed(2);
+}
+
+// Calculate change when cash tendered changes
+cashInput.addEventListener('input', calculateChange);
+
+function calculateChange() {
+    const totalCost = parseFloat(totalInput.value);
+    const cashTendered = parseFloat(cashInput.value) || 0;
+
+    const change = cashTendered - totalCost;
+    changeInput.value = change.toFixed(2);
+}
