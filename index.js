@@ -1,56 +1,64 @@
-// Get the necessary elements
-var product = document.getElementById("product");
-var price1 = document.getElementById("price1");
-var product2 = document.getElementById("product2");
-var price2 = document.getElementById("price2");
-var qty1 = document.getElementById("qty1");
-var qty2 = document.getElementById("qty2");
-var cart = document.getElementById("cart");
-var total = document.getElementById("total");
-var cash = document.getElementById("cash");
-var change = document.getElementById("change");
+<!-- script.js -->
+  <script src="script.js"></script>
 
-// Function to add an order
-function addOrder() {
-  if (qty1.value > 0) {
-    cart.value += qty1.value + " x " + product.textContent + " @ " + price1.textContent + " = " + (parseFloat(qty1.value) * parseFloat(price1.textContent)) + "\n";
-  }
-  if (qty2.value > 0) {
-    cart.value += qty2.value + " x " + product2.textContent + " @ " + price2.textContent + " = " + (parseFloat(qty2.value) * parseFloat(price2.textContent)) + "\n";
-  }
-}
-
-// Add event listeners to the quantity input fields
-qty1.addEventListener("keyup", addOrder);
-qty2.addEventListener("keyup", addOrder);
-
-// Function to calculate the total and change
-function calculateTotal() {
-  var totalAmount = 0;
-  var orders = cart.value.split("\n");
-  for (var i = 0; i < orders.length; i++) {
-    var order = orders[i].trim();
-    if (order) {
-      var parts = order.split(" @ ");
-      var quantity = parseInt(parts[0]);
-      var price = parseFloat(parts[1]);
-      totalAmount += quantity * price;
+  <!-- script.js -->
+  var cellphoneBrands = {
+    "apple": {
+      "iphone-13": {"price": 999, "description": "iPhone 13"}
+    },
+    "samsung": {
+      "samsung-galaxy-s21": {"price": 799, "description": "Samsung Galaxy S21"}
+    },
+    "google": {
+      "pixel-4a": {"price": 399, "description": "Pixel 4a"}
+    },
+    "huawei": {
+      "huawei-p30-pro": {"price": 699, "description": "Huawei P30 Pro"}
     }
+  };
+
+  var cart = [];
+  var total = 0;
+
+  document.getElementById("add-to-cart").addEventListener("click", function() {
+    var brand = document.getElementById("brand").value;
+    var model = document.getElementById("model").value;
+    var quantity = parseInt(document.getElementById("quantity").value);
+    var price = cellphoneBrands[brand][model]["price"];
+    var description = cellphoneBrands[brand][model]["description"];
+
+    var order = {
+      brand: brand,
+      model: model,
+      quantity: quantity,
+      price: price,
+      description: description
+    };
+
+    cart.push(order);
+    updateCart();
+  });
+
+  function updateCart() {
+    var ordersHTML = "";
+    for (var i = 0; i < cart.length; i++) {
+      ordersHTML += cart[i].brand + " " + cart[i].model + ": x" + cart[i].quantity + "\n";
+    }
+    document.getElementById("orders").innerHTML = ordersHTML;
+
+    total = 0;
+    for (var i = 0; i < cart.length; i++) {
+      total += cart[i].quantity * cart[i].price;
+    }
+    document.getElementById("total").innerHTML = "Total: $" + total.toFixed(2);
+
+    // calculate change
+    var cashAmount = parseFloat(document.getElementById("cash").value);
+    var changeAmount = cashAmount - total;
+    document.getElementById("change").innerHTML = "Change: $" + changeAmount.toFixed(2);
   }
-  total.textContent = "Total: $" + totalAmount.toFixed(2);
-}
 
-// Calculate the change
-function calculateChange() {
-  var changeAmount = cash.value - totalAmount;
-  change.textContent = "Change: $" + changeAmount.toFixed(2);
-}
-
-// Add event listener to the cash input field
-cash.addEventListener("input", calculateTotal);
-cash.addEventListener("input", calculateChange);
-
-// Initialize the cart and total
-cart.value = "";
-total.textContent = "";
-change.textContent = "";
+  document.getElementById("calculate-change").addEventListener("click", function() {
+    updateCart();
+  });
+</script>
