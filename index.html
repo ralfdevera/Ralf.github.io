@@ -1,100 +1,133 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Cellphone Store</title>
-  <style>
-    /* Add some basic styling to make the page look nicer */
-    body {
-      font-family: Arial, sans-serif;
-    }
-    #container {
-      width: 500px;
-      margin: 40px auto;
-      background-color: #f0f0f0;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-    }
-    #orders {
-      font-size: 18px;
-      font-weight: bold;
-    }
-    #total {
-      font-size: 24px;
-      font-weight: bold;
-      color: #00698f;
-    }
-    #change-container {
-      background-color: #f0f0f0;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-    }
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Cellphone Store</title>
+      <style>
+          #items {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+          }
+
+          .item {
+              margin: 20px;
+              width: 200px;
+              background-color: #fff;
+              border: 1px solid #ddd;
+              padding: 10px;
+              text-align: center;
+          }
+
+          .item img {
+              width: 100%;
+              height: 150px;
+              object-fit: cover;
+              border-radius: 10px;
+          }
+
+          #orders {
+              margin-top: 20px;
+              border: 1px solid #ddd;
+              padding: 10px;
+              background-color: #f0f0f0;
+          }
+
+          #orders table {
+              width: 100%;
+              border-collapse: collapse;
+          }
+
+          th, td {
+              border: 1px solid #ddd;
+              padding: 10px;
+              text-align: center;
+          }
+
+          th {
+              background-color: #4CAF50;
+              color: #fff;
+          }
+
+          td.total {
+              font-weight: bold;
+          }
+
+          #cash-change {
+              margin-top: 20px;
+              font-size: 18px;
+              font-weight: bold;
+          }
+
   </style>
-</head>
-<body>
-  <div id="container">
-    <h1>Cellphone Store</h1>
-    <form id="cellphone-form">
-      <label for="brand">Brand:</label>
-      <select id="brand" name="brand">
-        <option value="apple">Apple</option>
-        <option value="samsung">Samsung</option>
-        <option value="google">Google</option>
-        <option value="huawei">Huawei</option>
-      </select>
-      <br><br>
-      <label for="model">Model:</label>
-      <select id="model" name="model">
-        <!-- add options for different cellphone models -->
-        <option value="iphone-13" price="999" image="iphone-13.jpg">iPhone 13 ($999)</option>
-        <option value="samsung-galaxy-s21" price="799" image="samsung-galaxy-s21.jpg">Samsung Galaxy S21 ($799)</option>
-        <option value="pixel-4a" price="399" image="pixel-4a.jpg">Pixel 4a ($399)</option>
-        <option value="huawei-p30-pro" price="699" image="huawei-p30-pro.jpg">Huawei P30 Pro ($699)</option>
-      </select>
-      <br><br>
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" value="1">
-      <br><br>
-      <button id="add-to-cart">Add to Cart</button>
-    </form>
+  </head>
+  <body>
 
-    <!-- images -->
-    <img src="" id="iphone-13-image">
-    <img src="" id="samsung-galaxy-s21-image">
-    <img src="" id="pixel-4a-image">
-    <img src="" id="huawei-p30-pro-image">
+  <div id="items">
+      <div class="item">
+          <img src="image1.jpg" alt="Image 1">
+          <h2>Item 1</h2>
+          <p>Brand: Apple</p>
+          <p>Quantity:</p>
+          <input type="number" id="quantity1" value="0">
+          <p>Price:</p>
+          <span id="price1">P599.99</span>
+          
+          <div class="item" data-item-id="1">
+              <!-- your item details here -->
+              <button id="addToCart1">Add to Cart</button>
+          </div>
+      </div>
+      <div class="item">
+          <img src="image2.jpg" alt="Image 2">
+          <h2>Item 2</h2>
+          <p>Brand: Samsung</p>
+          <p>Quantity:</p>
+          <input type="number" id="quantity2" value="0">
+          <p>Price:</p>
+          <span id="price2">P699.99</span>
 
-    <!-- orders container -->
-    <div id="orders-container">
-      <h2>Orders:</h2>
-      <div id="orders"></div>
-
-      <!-- total container -->
-      <div id="total-container">
-        <h2>Total:</h2>
-        <div id="total"></div>
-
-        <!-- change container -->
-        <div id="change-container">
-          <h2>Change:</h2>
-          <input type="text" id="cash" placeholder="Enter cash amount">
-          <button id="calculate-change">Calculate Change</button>
-          <div id="change"></div>
-        </div>
-
-        <!-- cellphone information container -->
-        <div id="cellphone-information-container">
-          <!-- brand, price, quantity, model -->
-          <!-- display information here -->
-        </div>
-
-    </div>
-
+       
+          <div class="item" data-item-id="1">
+              <!-- your item details here -->
+              <button id="addToCart1">Add to Cart</button>
+          </div>
+      </div>
+      ...
+      <div class="item">
+          <img src="image10.jpg" alt="Image 10">
+          <h2>Item 10</h2>
+          <p>Brand: Google</p>
+          <p>Quantity:</p>
+          <input type="number" id="quantity10" value="0">
+          <p>Price:</p>
+          <span id="price10">P899.99</span>
+        
+          <div class="item" data-item-id="1">
+              <!-- your item details here -->
+              <button id="addToCart1">Add to Cart</button>
+          </div>
+      </div>
   </div>
 
-  <!-- script.js -->
+  <div id="orders">
+      <h2>Orders</h2>
+      <table>
+          <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+          </tr>
+      </table>
+
+      <!-- Order details will be displayed here -->
+
+      <!-- Buttons for calculating total and displaying change -->
+      <button id="calculate-total">Calculate Total</button>
+
+      <!-- Display total and change -->
+      <div id="total"></div><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+
   <script src="script.js"></script>
 
-</body>
-</html>
+  </body>
