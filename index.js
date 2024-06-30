@@ -1,34 +1,68 @@
-var cellphoneBrands = {
-  "apple": {
-    "iphone-13": {"price": 999, "description": "iPhone 13", "image": "iphone-13.jpg"}
-  },
-  "samsung": {
-    "samsung-galaxy-s21": {"price": 799, "description": "Samsung Galaxy S21", "image": "samsung-galaxy-s21.jpg"}
-  },
-  "google": {
-    "pixel-4a": {"price": 399, "description": "Pixel 4a", "image": "pixel-4a.jpg"}
-  },
-  "huawei": {
-    "huawei-p30-pro": {"price": 699, "description": "Huawei P30 Pro", "image": "huawei-p30-pro.jpg"}
-  }
-};
+const items = document.querySelectorAll('.item');
+const ordersTable = document.getElementById('orders');
+const totalElement = document.getElementById('total');
+const cashChangeElement = document.getElementById('cash-change');
 
-var cart = [];
-var total = 0;
+let orders = [];
 
-document.getElementById("add-to-cart").addEventListener("click", function() {
-  var brand = document.getElementById("brand").value;
-  var model = document.getElementById("model").value;
-  var quantity = parseInt(document.getElementById("quantity").value);
+items.forEach((item) => {
+    const quantityInput = item.querySelector('input');
+    const priceElement = item.querySelector('#price');
+    const addToCartButton = item.querySelector('#addToCart');
 
-}
+    quantityInput.addEventListener('input', () => {
+        const quantity = parseInt(quantityInput.value);
+        if (quantity > 0) {
+            orders.push({
+                item: item.querySelector('img').src,
+                brand: item.querySelector('h2').textContent,
+                quantity,
+                price: parseFloat(priceElement.textContent)
+            });
+        }
+    });
 
-document.getElementById("calculate-change").addEventListener("click", function() {
+        addToCartButton.addEventListener('click', () => {
+            const quantity = parseInt(quantityInput.value);
+            if (quantity > 0) {
+                const itemId = item.getAttribute('data-item-id');
+                const itemDetails = {
+                    item: item.querySelector('img').src,
+                    brand: item.querySelector('h2').textContent,
+                    quantity,
+                    price: parseFloat(priceElement.textContent)
+                };
+                orders.push(itemDetails);
 
+                // Append the item details to the orders container
+                const ordersTable = document.getElementById('orders');
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${itemDetails.brand}</td>
+                    <td>${itemDetails.quantity}</td>
+                    <td>${itemDetails.price * itemDetails.quantity}</td>
+                `;
+                ordersTable.appendChild(newRow);
+
+                quantityInput.value = '0';
+            }
+        });
+    });
 });
 
-function updateCart() {
+document.getElementById('calculate-total').addEventListener('click', () => {
+    let subtotal = 0;
+    orders.forEach((order) => {
+        subtotal += order.price * order.quantity;
+    });
+    totalElement.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
 
-}
+    const cashValue = parseFloat(prompt("Enter cash:", ""));
+    const changeValue = cashValue - subtotal;
 
-updateCart();
+    if (changeValue >= 0) {
+        cashChangeElement.textContent = `Change: $${changeValue.toFixed(2)}`;
+    } else {
+        alert("Insufficient cash!");
+    }
+});
